@@ -14,6 +14,8 @@ namespace TwitterObserver
             TwitterFirehose.StartStream(OnTweet);
         }
 
+        //every time we recieve a tweet (from our Firehose class)
+        //notify all our observers
         private void OnTweet(Task<Tweet> task)
         {
             foreach(IObserver<Tweet> observer in observers)
@@ -22,6 +24,8 @@ namespace TwitterObserver
             }
         }
 
+        //here's the actual IObservable method we have to implement
+        //just keeping a list of observers so we can nofity them later
         public IDisposable Subscribe(IObserver<Tweet> observer)
         {
             observers.Add(observer);
@@ -30,6 +34,8 @@ namespace TwitterObserver
         }
     }
 
+    //placeholder class for making unsubscribing from an observable
+    //easier
     public class Unsubscriber : IDisposable
     {
         private IObserver<Tweet> _observer;

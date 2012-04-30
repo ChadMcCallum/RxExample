@@ -18,6 +18,7 @@ namespace TwitterObserver
 
         public static CancellationTokenSource StartStream(Action<Task<Tweet>> onTweet)
         {
+            //ignore this, I know it's ugly.
             var source = new CancellationTokenSource();
             TaskScheduler.UnobservedTaskException += (sender, excArgs) => excArgs.SetObserved();
             TaskScheduler.UnobservedTaskException += new EventHandler<UnobservedTaskExceptionEventArgs>(TaskScheduler_UnobservedTaskException);
