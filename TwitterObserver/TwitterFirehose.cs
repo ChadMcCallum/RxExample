@@ -30,7 +30,7 @@ namespace TwitterObserver
                                           HttpWebRequest;
                                       if (request != null)
                                       {
-                                          var credentials = new NetworkCredential { UserName = "CAOTW", Password = "shoehorn" };
+                                          var credentials = new NetworkCredential { UserName = "Your Username", Password = "Your Password" };
                                           request.Credentials = credentials;
                                           var response = request.GetResponse() as HttpWebResponse;
                                           if (response != null)
